@@ -1,0 +1,1 @@
+To do given problems under for loop shell script
