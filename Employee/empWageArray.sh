@@ -10,7 +10,7 @@ isPartTime=1;
 isFullTime=2;
 isAbscent=0;
 #to check attendance
-##for ((i=1;i<=workingDays;i++))
+
 function getWorkingHours(){
 	 case $1 in
          $isPartTime)
