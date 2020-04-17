@@ -10,7 +10,7 @@ isPartTime=1;
 isFullTime=2;
 isAbscent=0;
 #to check attendance
-##for ((i=1;i<=workingDays;i++))
+
 while [[ $hours -lt $workingHours  ||  $count -lt $workingDays ]]
 do
  	empCheck=$((RANDOM%3));
