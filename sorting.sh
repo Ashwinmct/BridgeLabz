@@ -26,3 +26,10 @@ results[computation4]=$result4;
 #Usecase 6
 #Adding result to dictionary
 
+#Usecase 7
+#To read the value from dictionary into the array
+count=0;
+for i in ${results[@]}
+do
+	resultArray[((count++))]=$i;
+done
