@@ -33,3 +33,20 @@ for i in ${results[@]}
 do
 	resultArray[((count++))]=$i;
 done
+#usecase 8
+#Sort the array in decending order
+for ((i=0;i<3;i++))
+do
+	for ((j=i+1;j<4;j++))
+	do
+		if ((${resultArray[i]} < ${resultArray[j]}))
+		then
+			#swaping
+			temp=${resultArray[$j]};
+			resultArray[$j]=${resultArray[$i]};
+			resultArray[$i]=$temp;
+		fi
+	done
+done
+echo "Array in Decending order:"
+echo ${resultArray[@]};
