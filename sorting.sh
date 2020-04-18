@@ -10,19 +10,19 @@ declare -A results
 #usecase 2
 #To compute a+b*c
 result1=$((a+b*c));
-results["computation1"]=$result1;
+results[computation1]=$result1;
 #usecase 3
 #To complete a*b+c
 result2=$((a*b+c));
-results["computation2"]=$result2;
+results[computation2]=$result2;
 #Usecase 4
 #To complete  c+a/b
 result3=`awk "BEGIN{print $((c+(a/b)))}"`;
-results["computation3"]=$result3;
+results[computation3]=$result3;
 #Use case 5 
 #To compute a%b+c
 result4=$((a%(b+c)));
-results["computation4"]=$result4;
+results[computation4]=$result4;
 #Usecase 6
 #Adding result to dictionary
 
