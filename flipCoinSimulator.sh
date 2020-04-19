@@ -5,10 +5,8 @@
 function flipCoin(){
 	if [ $((RANDOM%2)) -eq "0" ]
 	then
-		#HEAD if genrated random number is even
 		echo "H";
 	else
-		#TAIL if genrated random number is odd
 		echo "T";
 	fi
 }
@@ -32,7 +30,9 @@ do
 	fi
 done
 echo ${results[@]};
-echo "Heads=$heads";
+echo "Percentage of Singlets";
 echo "Tails=$tails";
 echo "Percentage of Heads= `awk "BEGIN{print $((heads*100/n))}"`";
 echo "Percentage of Tails= `awk "BEGIN{print $((tails*100/n))}"`";
+
+
