@@ -15,7 +15,7 @@ function flipCoin(){
 #flip coin for n times using loop
 #store singlets in a dictionary
 #find percentage of Singlets
-declare -A doublets
+declare -A singlets
 isHead="H"
 read -p "Enter number of times to flip the coin " n;
 for (( i=0;i<n;i++ ))
