@@ -15,7 +15,7 @@ function flipCoin(){
 #flip coin for n times using loop
 #store singlets in a dictionary
 #find percentage of Singlets
-declare -A results
+declare -A doublets
 isHead="H"
 read -p "Enter number of times to flip the coin " n;
 for (( i=0;i<n;i++ ))
@@ -34,5 +34,6 @@ echo ${singlets[@]};
 echo "Percentage of Singlets";
 echo "Percentage of Heads= `awk "BEGIN{print $((heads*100/n))}"`";
 echo "Percentage of Tails= `awk "BEGIN{print $((tails*100/n))}"`";
+
 
 
