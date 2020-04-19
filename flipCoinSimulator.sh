@@ -130,4 +130,3 @@ echo "Percentage of HTT= `awk "BEGIN{print $((htt*100/n))}"`";
 echo "Percentage of THT= `awk "BEGIN{print $((tht*100/n))}"`";
 
 
-
