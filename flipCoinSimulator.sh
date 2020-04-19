@@ -37,9 +37,9 @@ echo "Percentage of Tails= `awk "BEGIN{print $((tails*100/n))}"`";
 
 
 
-#Usecase 2
+#Usecase 3
 #flip coin for n times using loop
-#store singlets in a dictionary
+#store doublets in a dictionary
 #find percentage of Singlets
 declare -A doublets
 hh=0
