@@ -21,7 +21,6 @@ read -p "Enter number of times to flip the coin " n;
 for (( i=0;i<n;i++ ))
 do
 	res="$( flipCoin )"
-	singlets[$i]=$res;
 	if [ "$res" == "$isHead" ]
 	then
 		heads=$((heads+1));
@@ -29,11 +28,8 @@ do
 		tails=$((tails+1));
 	fi
 done
-echo "Generated Singlets:"
-echo ${singlets[@]};
-echo "Percentage of Singlets";
-echo "Percentage of Heads= `awk "BEGIN{print $((heads*100/n))}"`";
-echo "Percentage of Tails= `awk "BEGIN{print $((tails*100/n))}"`";
+singlets[H]=`awk "BEGIN{print $((heads*100/n))}"`";
+singlets[T]=`awk "BEGIN{print $((tails*100/n))}"`";
 
 
 
@@ -49,7 +45,6 @@ tt=0
 for (( i=0;i<n;i++ ))
 do
 	res="$( flipCoin )""$( flipCoin )"
-	doublets[$i]=$res;
 	case $res in
 		"HH")
 			hh=$((hh+1));
@@ -65,13 +60,10 @@ do
 			;;
 	esac
 done
-echo "Generated doublets:"
-echo ${doublets[@]};
-echo "HH=$hh HT=$ht TH=$th TT=$tt"
-echo "Percentage of HH= `awk "BEGIN{print $((hh*100/n))}"`";
-echo "Percentage of TT= `awk "BEGIN{print $((tt*100/n))}"`";
-echo "Percentage of HT= `awk "BEGIN{print $((ht*100/n))}"`";
-echo "Percentage of TH= `awk "BEGIN{print $((th*100/n))}"`";
+doublets[HH]=`awk "BEGIN{print $((hh*100/n))}"`";
+doublets[TT]=`awk "BEGIN{print $((tt*100/n))}"`";
+doublets[HT]=`awk "BEGIN{print $((ht*100/n))}"`";
+doublets[TH]=`awk "BEGIN{print $((th*100/n))}"`";
 
 #Usecase 4
 #flip coin for n times using loop
@@ -89,7 +81,6 @@ ttt=0
 for (( i=0;i<n;i++ ))
 do
 	res="$( flipCoin )""$( flipCoin )""$( flipCoin )";
-	triplets[$i]=$res;
 	case $res in
 		"HHH")
 			hhh=$((hhh+1));
@@ -117,16 +108,13 @@ do
 			;;
 	esac
 done
-echo "Generated triplets:"
-echo ${triplets[@]};
-echo "HHH=$hhh HHT=$hht HTH=$hth HTT=$htt THH=$thh THT=$tht TTH=$tth TTT=$ttt"
-echo "Percentage of HHH= `awk "BEGIN{print $((hhh*100/n))}"`";
-echo "Percentage of TTH= `awk "BEGIN{print $((tth*100/n))}"`";
-echo "Percentage of HTH= `awk "BEGIN{print $((hth*100/n))}"`";
-echo "Percentage of THH= `awk "BEGIN{print $((thh*100/n))}"`";
-echo "Percentage of HHT= `awk "BEGIN{print $((hht*100/n))}"`";
-echo "Percentage of TTT= `awk "BEGIN{print $((ttt*100/n))}"`";
-echo "Percentage of HTT= `awk "BEGIN{print $((htt*100/n))}"`";
-echo "Percentage of THT= `awk "BEGIN{print $((tht*100/n))}"`";
+triplets[HHH]=`awk "BEGIN{print $((hhh*100/n))}"`";
+triplets[TTH]=`awk "BEGIN{print $((tth*100/n))}"`";
+triplets[HTH]=`awk "BEGIN{print $((hth*100/n))}"`";
+triplets[THH]=`awk "BEGIN{print $((thh*100/n))}"`";
+triplets[HHT]=`awk "BEGIN{print $((hht*100/n))}"`";
+triplets[TTT]=`awk "BEGIN{print $((ttt*100/n))}"`";
+triplets[HTT]=`awk "BEGIN{print $((htt*100/n))}"`";
+triplets[THT]=`awk "BEGIN{print $((tht*100/n))}"`";
 
 
