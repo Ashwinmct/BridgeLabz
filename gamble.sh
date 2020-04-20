@@ -40,6 +40,10 @@ do
 		loss=$((loss+1));
 	fi;
 done
+
+#usecase 5
+#No. of days won and lost and by how much
+echo "Days Won=$won Days Lost=$loss"
 echo "Total Ammount won=$((won*llimit))";
 echo "Total Ammount lost=$((loss*llimit))";
 
