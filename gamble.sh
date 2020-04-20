@@ -10,10 +10,17 @@ isWin=1;
 #Usecase 2
 #A gambler bets $1 so  either win or loose $1
 days=100
+
+#Use case3
+#resign for the day if won or lost than half of the stack
+llimit=`awk "BEGIN{print ($stake*(0.5))}"`
+hlimit=`awk "BEGIN{print (($stake+$llimit))}"`
+
+
 for ((i=0;i<days;i++))
 do
 	money=$stake;
-	while [ $money -lt $goal ] && [ $money -gt 0 ]
+	while [ $money -lt $hlimit ] && [ $money -gt $llimit ]
 	do
 		gamble=$((RANDOM%2));
 		if [ $gamble -eq $isWin ]
