@@ -1,18 +1,15 @@
 #!/bin/bash -x
-##Use case 1
-##A person starts gamblig with Rs 100 to reach the goal Rs 200 by bidding Rs 1 each time
-##To simulate gambling and find she finaly wins or not and keep the track of win and loss
 stake=100;
 goal=200;
 isWin=1;
-
-#Usecase 2
-#A gambler bets $1 so  either win or loose $1
 days=100
 
-#Use case3
-#resign for the day if won or lost than half of the stack
-#As a Calculative Gambler if won or lost 50% of the stake, would resign for the day
+#Use case4
+#After 20 days of playing every day would like to know the total amount won or lost.
+#Hence storing the value of each day in array
+index=0
+profitArray[((index++))]=0; #for 0th day result
+lossArray[((0))]=0;
 for ((i=0;i<days;i++))
 do
 	money=$stake;
@@ -30,8 +27,10 @@ do
 	done
 	if [ $money -eq 0]
 	then
+		lossArray[((index++))]=$lowlimit
 		stake=$((stake-lowlimit));
 	else
+		profitArray[((index++))]=$hilimit;
 		stake=$((stake+lowlimit));
 	fi
 done
