@@ -2,11 +2,14 @@
 stake=100;
 goal=200;
 isWin=1;
-days=100
+days=30 #average days per month
+daysWon=0;
+daysLost=0;
+totalProfit=0;
+totalLoss=0;
 
-#Use case4
-#After 20 days of playing every day would like to know the total amount won or lost.
-#Hence storing the value of each day in array
+#Use case5
+#Each month would like to know the days won and lost and by how much.
 index=0
 profitArray[((index++))]=0; #for 0th day result
 lossArray[((0))]=0;
@@ -29,9 +32,13 @@ do
 	then
 		lossArray[((index++))]=$lowlimit
 		stake=$((stake-lowlimit));
+		daysLost=$((daysLost+1));
+		totalLoss=$((totalLoss+lowlimit));
 	else
 		profitArray[((index++))]=$hilimit;
 		stake=$((stake+lowlimit));
+		daysWon=$((daysWon+1));
+		totalProfit=$((totalProfit+lowlimit));
 	fi
 done
 
