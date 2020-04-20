@@ -1,4 +1,21 @@
 #!/bin/bash -x
+
+function findMax(){
+	local array=$1;
+	local max=0;
+	local index=0;
+	for i in "${array[@]}"
+	do
+		if [ $i -gt $max ]
+		then
+			max=$i;
+			index="{! i }";
+		fi;
+	done
+	echo $index;
+}
+
+#main code
 stake=100;
 goal=200;
 isWin=1;
@@ -8,8 +25,8 @@ daysLost=0;
 totalProfit=0;
 totalLoss=0;
 
-#Use case5
-#Each month would like to know the days won and lost and by how much.
+#Use case 6
+#Would also like to know my luckiest day where I won maximum and my unluckiest day where I lost maximum 
 index=0
 profitArray[((index++))]=0; #for 0th day result
 lossArray[((0))]=0;
@@ -41,5 +58,6 @@ do
 		totalProfit=$((totalProfit+lowlimit));
 	fi
 done
-
+echo "LuckiestDay of month=$( findMax $profitArray )";
+echo "UnluckiestDay of month=$( findMax $lossArray )";
 
