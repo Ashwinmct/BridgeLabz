@@ -16,7 +16,10 @@ days=100
 llimit=`awk "BEGIN{print ($stake*(0.5))}"`
 hlimit=`awk "BEGIN{print (($stake+$llimit))}"`
 
-
+#Use case 4
+#After 20 days he want no total ammount that he won or lost
+won=0
+loss=0
 for ((i=0;i<days;i++))
 do
 	money=$stake;
@@ -30,6 +33,13 @@ do
 			money=$((money-1));
 		fi;
 	done
+	if [ $money -eq $hlimit ]
+	then
+		won=$((won+1));
+	else
+		loss=$((loss+1));
+	fi;
 done
-
+echo "Total Ammount won=$((won*llimit))";
+echo "Total Ammount lost=$((loss*llimit))";
 
