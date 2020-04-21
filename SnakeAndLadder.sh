@@ -3,9 +3,8 @@
 #finds a safe place, ladder or a snake
 #keeps doing till the winning spot 100 is achieved.
 
-#UseCase 6
-#Report the number of times the dice was played to win the game and also the position
-#after every die role
+#UseCase 7
+#Play the game with 2 Player and report which Player won the game
 
 boardStarting=1
 boardEnd=100
@@ -68,6 +67,7 @@ function playGame()
 			printf "Total Dice Count =$diceCount"
 			break;
 		else if [ $player2Position -eq $boardEnd ]
+		then
 			printf "Player 1 Won"
 			printf "Total Dice Count =$diceCount"
 			break;
@@ -75,13 +75,13 @@ function playGame()
 	done
 }
 
-
+#Values of snakes and ladders
 declare -a ladderArray
 declare -a snakeArray
 for ((i=0;i<=boardEnd;i++))
 do
 	ladderArray[$i]=0;
-	ladderArray[$i]=0;
+	snakeArray[$i]=0;
 done
 ladderArray[1]=38
 ladderArray[4]=14
@@ -120,7 +120,7 @@ function getPosition()
 	then
 		result=$boardEnd;
 	fi
-	echo $boardEnd;
+	echo $result;
 }
 
 function checkArray()
@@ -133,4 +133,9 @@ function checkArray()
 
 }
 #maincode
-startGame;
+read -p "Do you want to play 2Player Snake And Ladder Game.\n If YES enter 1 " choice;
+isYes=1;
+if [ $choice -eq $isYes ]
+then
+	startGame;
+fi
