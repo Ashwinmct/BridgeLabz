@@ -3,8 +3,9 @@
 #finds a safe place, ladder or a snake
 #keeps doing till the winning spot 100 is achieved.
 
-#UseCase 5
-#Ensure the player gets to exact winning position 100.
+#UseCase 6
+#Report the number of times the dice was played to win the game and also the position
+#after every die role
 
 boardStarting=1
 boardEnd=100
@@ -15,6 +16,7 @@ function startGame()
 	printf "WELCOME TO THE SNAKE AND LADDERS GAME\n"
 	#Display board
 	displayBoard;
+	playGame;
 }
 
 function displayBoard(){
@@ -48,14 +50,26 @@ function playGame()
 {
 	player1Position=$boardStarting;
 	player2Position=$boardStarting;
-	player1Count=0;
-	player2Count=0;
+	diceCount=0;
 	while [true]
 	do
+		#player 1
 		player1Position="$( getPosition $player1position )"
+		diceCount=$((diceCount+1));
+		printf "\nPlayer 1 position=$player1Position"
+		#player2
 		player2Position="$( getPosition $player2position )"
-		if [ $player1Position -eq $boardEnd ] && [ $player2Position -eq $boardEnd ]
+		diceCount=$((diceCount+1));
+		printf "\nPlayer 1 position=$player1Position"
+		#winning condition
+		if [ $player1Position -eq $boardEnd ]
 		then
+			printf "Player 1 Won"
+			printf "Total Dice Count =$diceCount"
+			break;
+		else if [ $player2Position -eq $boardEnd ]
+			printf "Player 1 Won"
+			printf "Total Dice Count =$diceCount"
 			break;
 		fi
 	done
