@@ -53,8 +53,11 @@ function playGame()
 	while [true]
 	do
 		player1Position="$( getPosition $player1position )"
-		
 		player2Position="$( getPosition $player2position )"
+		if [ $player1Position -eq $boardEnd ] && [ $player2Position -eq $boardEnd ]
+		then
+			break;
+		fi
 	done
 }
 
@@ -118,4 +121,3 @@ function checkArray()
 }
 #maincode
 startGame;
-echo "$(rollDice)";
