@@ -1,9 +1,10 @@
 #!/bin/bash -x
-#This problem simulates a Snake and Ladder Game. The Player starts from 0 rolls the die to get a number between 1 to 6, finds a safe place, ladder or a snake keeps doing till the winning spot 100 is achieved.
+#This problem simulates a Snake and Ladder Game. The Player starts from 0 rolls the die to get a number between 1 to 6, 
+#finds a safe place, ladder or a snake
+#keeps doing till the winning spot 100 is achieved.
+boardStarting=1
+boardEnd=100
 
-##funtions
-#Use Case 1
-#Snake and Ladder game played with single player at start position 0
 
 function startGame()
 {
@@ -34,11 +35,82 @@ function displayBoard(){
 	printf "\nBoard ends at 1"
 }
 
-#UseCase 2
-#The Player rolls the die to get a number between 1 to 6.
 function rollDice()
 {
 	echo "$((1+(RANDOM%6)))";
+}
+
+function playGame()
+{
+	player1Position=$boardStarting;
+	player2Position=$boardStarting;
+	player1Count=0;
+	player2Count=0;
+	while [true]
+	do
+		player1Position="$( getPosition $player1position )"
+
+		player1Position="$( getPosition $player1position )"
+	done
+}
+
+#Usecase3
+#The Player then checks for a Option.
+#They are No Play, Ladder or Snake
+
+#defining ladders and snakes position
+declare -a ladderArray
+declare -a snakeArray
+for ((i=0;i<=boardEnd;i++))
+do
+	ladderArray[$i]=0;
+	ladderArray[$i]=0;
+done
+ladderArray[1]=38
+ladderArray[4]=14
+laddderArray[8]=30;
+ladderArray[21]=42;
+ladderArray[28]=76;
+ladderArray[50]=67;
+ladderArray[71]=92;
+ladderArray[80]=99;
+
+snakeArray[32]=10
+snakeArray[36]=6
+snakeArray[48]=26
+snakeArray[62]=18
+snakeArray[88]=24
+snakeArray[95]=56
+snakeArray[97]=78
+
+
+function getPosition()
+{
+	local noChange=0;
+	local oldPosition=$1;
+	local diceValue="$( rollDice )"
+	newPosition=$((oldPosition+diceValue));
+	result="$( checkArray $ladderArray $newPosition )";
+	if [ $res -eq $noChange ]
+	then
+		result="$( checkArray $snakeArray $newPosition )";
+	fi
+	if [ $result -eq $noChange ]
+	then
+		echo $newPosition;
+	else
+		echo $result
+	fi
+}
+
+function checkArray()
+{
+	local array=$1;
+	local index=$2;
+	local result=${array[index]};
+	return result;
+
+
 }
 #maincode
 startGame;
