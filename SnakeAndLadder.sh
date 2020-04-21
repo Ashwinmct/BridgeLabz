@@ -2,6 +2,10 @@
 #This problem simulates a Snake and Ladder Game. The Player starts from 0 rolls the die to get a number between 1 to 6, 
 #finds a safe place, ladder or a snake
 #keeps doing till the winning spot 100 is achieved.
+
+#UseCase 4
+#Repeat till the Player reaches the winning position 100.
+
 boardStarting=1
 boardEnd=100
 
@@ -49,8 +53,8 @@ function playGame()
 	while [true]
 	do
 		player1Position="$( getPosition $player1position )"
-
-		player1Position="$( getPosition $player1position )"
+		
+		player2Position="$( getPosition $player2position )"
 	done
 }
 
