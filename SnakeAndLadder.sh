@@ -3,8 +3,8 @@
 #finds a safe place, ladder or a snake
 #keeps doing till the winning spot 100 is achieved.
 
-#UseCase 4
-#Repeat till the Player reaches the winning position 100.
+#UseCase 5
+#Ensure the player gets to exact winning position 100.
 
 boardStarting=1
 boardEnd=100
@@ -61,11 +61,7 @@ function playGame()
 	done
 }
 
-#Usecase3
-#The Player then checks for a Option.
-#They are No Play, Ladder or Snake
 
-#defining ladders and snakes position
 declare -a ladderArray
 declare -a snakeArray
 for ((i=0;i<=boardEnd;i++))
@@ -98,16 +94,19 @@ function getPosition()
 	local diceValue="$( rollDice )"
 	newPosition=$((oldPosition+diceValue));
 	result="$( checkArray $ladderArray $newPosition )";
-	if [ $res -eq $noChange ]
+	if [ $result -eq $noChange ]
 	then
 		result="$( checkArray $snakeArray $newPosition )";
 	fi
 	if [ $result -eq $noChange ]
 	then
-		echo $newPosition;
-	else
-		echo $result
+		result=$newPosition;
 	fi
+	if [ $result -gt $boardEnd ]
+	then
+		result=$boardEnd;
+	fi
+	echo $boardEnd;
 }
 
 function checkArray()
